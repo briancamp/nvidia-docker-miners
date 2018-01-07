@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pool="$1"
+user="$2"
+
+if [ -z "$2" ]; then
+  echo "Usage: $0 <pool> <user>"
+  exit 1
+fi
+
+algorithm="$(echo "$pool" | sed 's/\..*//')"
+
+nvidia-docker run --rm -it miner mine excavator-start "$algorithm" "$pool" "$user"

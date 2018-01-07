@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pool="$1"
+user="$2"
+
+if [ -z "$2" ]; then
+  echo "Usage: $0 <pool> <user>"
+  exit 1
+fi
+
+nvidia-docker run --rm -it miner mine ethminer -SP 2 -U -S "$pool" -O "$user"

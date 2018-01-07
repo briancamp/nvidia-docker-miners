@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Init
+my_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. "$my_dir/vars.bash"
+. "$my_dir/set-gpu/set-gpu.bash"
+. "$my_dir/startup.bash"
+
+# Configure video cards (uncomment / edit)
+# Usage: set_nvidia_card <PCI id> <fan speed> <cpu offset> <memory offset>
+# 1080 ti (1)
+#set_nvidia_card PCI:1:0:0 90 0 0
+#nvidia-smi -i 1 -pl 220
+## 1080 ti (2)
+#set_nvidia_card PCI:3:0:0 90 0 0
+#nvidia-smi -i 2 -pl 220
+
+# Pool user/names (edit)
+nh_user="3JeigPDY9gzP7UoqJNPaXQHazzsM4wCZhS.$me"
+xmr_user="475FieCP9NqLh5ZtgtwXG7GrBgnorpEPrASMMmf73YVq44MZMajMzsU3VFRbUqR25gLgBbyt8LW7WhGx15tC1NJuUZ5P7wk.$me"
+
+# Start miners (uncomment / edit)
+#screen -dm -S dstm "$my_dir"/start/start.dstm equihash.usa.nicehash.com:3357 "$nh_user"
+#screen -dm -S ethermine "$my_dir"/start/start.ethermine daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
+#screen -dm -S ewfb "$my_dir"/start/start.ewfb equihash.usa.nicehash.com:3357 "$nh_user"
+#screen -dm -S xmrig "$my_dir"/start/start.xmrig pool.minexmr.com:4444 "$xmr_user"
+#screen -dm -S daggerhashimoto_excavator "$my_dir"/start/start.excavator daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
+#screen -dm -S equihash_excavator "$my_dir"/start/start.excavator equihash.usa.nicehash.com:3357 "$nh_user"
+#screen -dm -S lbry_excavator "$my_dir"/start/start.excavator lbry.usa.nicehash.com:3356 "$nh_user"
+#screen -dm -S lyra2rev2_excavator "$my_dir"/start/start.excavator lyra2rev2.usa.nicehash.com:3347 "$nh_user"
+#screen -dm -S neoscrypt_excavator "$my_dir"/start/start.excavator neoscrypt.usa.nicehash.com:3341 "$nh_user"

@@ -1,0 +1,65 @@
+#!/bin/bash
+
+set -e
+
+export PATH="$PATH":/usr/local/nvidia/bin/
+
+mk_config() {
+  cat <<EOF
+[
+        {"time":0,"commands":[
+                {"id":1,"method":"algorithm.add","params":["$algorithm","$pool_addr","$username"]}
+        ]},
+        {"time":3,"commands":[
+EOF
+  for i in $(seq 1 $num_gpus); do
+    ((i--))
+    cat <<EOF
+                {"id":1,"method":"worker.add","params":["0","$i"]},
+EOF
+  done
+  cat <<EOF
+                {"id":1,"method":"message","params":["Workers added."]}
+EOF
+  cat <<EOF
+        ]},
+        {"time":10,"loop":10,"commands":[
+EOF
+  for i in $(seq 1 $num_gpus); do
+    ((i--))
+    cat <<EOF
+                {"id":1,"method":"worker.print.speed","params":["$i"]},
+EOF
+  done
+  cat <<EOF
+                {"id":1,"method":"algorithm.print.speeds","params":["0"]}
+        ]}
+]
+EOF
+}
+
+
+if [ -z "$3" ]; then
+  cat <<EOF
+Usage: $0 <algorithm> <pool> <username>
+
+Eg: $0 daggerhashimoto daggerhashimoto.usa.nicehash.com:3353 3JeigPDY9gzP7UoqJNPaXQHazzsM4wCZhS.tester
+
+EOF
+  exit 1
+fi
+
+algorithm=$1
+pool_addr=$2
+username=$3
+
+num_gpus=$(nvidia-smi --list-gpus | wc -l)
+if [ $num_gpus -eq 0 ]; then
+  echo "Couldn't detect any GPUs via nvidia-smi."
+  exit 1
+fi
+
+mk_config > ~/excavator_command.json
+echo "Launching excavator with the following config:"
+cat ~/excavator_command.json
+excavator -d 2 -c ~/excavator_command.json

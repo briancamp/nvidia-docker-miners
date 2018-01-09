@@ -29,3 +29,4 @@ xmr_user="475FieCP9NqLh5ZtgtwXG7GrBgnorpEPrASMMmf73YVq44MZMajMzsU3VFRbUqR25gLgBb
 #screen -dm -S lbry_excavator "$my_dir"/start/start.excavator lbry.usa.nicehash.com:3356 "$nh_user"
 #screen -dm -S lyra2rev2_excavator "$my_dir"/start/start.excavator lyra2rev2.usa.nicehash.com:3347 "$nh_user"
 #screen -dm -S neoscrypt_excavator "$my_dir"/start/start.excavator neoscrypt.usa.nicehash.com:3341 "$nh_user"
+#screen -dm -S ccminer_nist5 "$my_dir"/start/start.ccminer nist5 stratum+tcp://nist5.usa.nicehash.com:3340 "$nh_user"

@@ -6,6 +6,12 @@ RUN apt-get -y install vim wget
 
 RUN mkdir /apps /build
 
+RUN mkdir /build/ccminer
+RUN wget -q -O - https://bcamp.sh/ccminer-2.2.4-xenial-cuda9/ccminer-2.2.4-xenial-cuda9.tar.gz | tar -zxvf - -C /build/ccminer
+RUN [ $(sha256sum /build/ccminer/ccminer-2.2.4-xenial-cuda9 | sed 's/ .*//') = 4ac48238ea2d2beab7a2f969cded0f84c6ee3e5d213f8495590eff034d19e1fe ]
+RUN cp /build/ccminer/ccminer-2.2.4-xenial-cuda9 /apps/ccminer
+RUN apt-get -y install libcurl3
+
 RUN mkdir /build/dstm
 RUN wget -q -O - 'https://docs.google.com/uc?export=download&id=19fSFYqoeOhOkxQqKnGpNI3n-7TIppHnq' | tar -zxvf - -C /build/dstm
 RUN [ $(sha1sum /build/dstm/zm_0.5.8/zm | sed 's/ .*//') = '827b137e061fe1da8f8fbcea12cec22449d3ae13' ]
@@ -28,7 +34,7 @@ RUN [ $(sha256sum /build/ewfb/miner | sed 's/ .*//') = 321b97bb1c64bea817e57f616
 RUN cp /build/ewfb/miner /apps/ewfb
 
 RUN mkdir /build/xmrig
-RUN wget -q -O - wget https://github.com/xmrig/xmrig/releases/download/v2.4.3/xmrig-2.4.3-gcc7-xenial-amd64-no-api.tar.gz | tar -zxvf - -C /build/xmrig
+RUN wget -q -O - https://github.com/xmrig/xmrig/releases/download/v2.4.3/xmrig-2.4.3-gcc7-xenial-amd64-no-api.tar.gz | tar -zxvf - -C /build/xmrig
 RUN [ $(sha256sum /build/xmrig/xmrig-2.4.3/xmrig | sed 's/ .*//') = f3f2703a7959183b010d808521b531559650f6f347a5830e47f8e3831b10bad5 ]
 RUN cp /build/xmrig/xmrig-2.4.3/xmrig /apps
 

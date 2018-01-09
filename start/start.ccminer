@@ -1,0 +1,13 @@
+#!/bin/bash
+set -x
+
+algorithm="$1"
+pool="$2"
+user="$3"
+
+if [ -z "$2" ]; then
+  echo "Usage: $0 <algorithm> <pool> <user>"
+  exit 1
+fi
+
+nvidia-docker run --rm -it miner mine ccminer -a "$algorithm" -o "$pool" -u "$user"

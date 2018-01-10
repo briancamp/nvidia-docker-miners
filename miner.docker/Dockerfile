@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-runtime-ubuntu16.04
 
 RUN apt-get update
 RUN apt-get -y upgrade
@@ -10,7 +10,7 @@ RUN mkdir /build/ccminer
 RUN wget -q -O - https://bcamp.sh/ccminer-2.2.4-xenial-cuda9/ccminer-2.2.4-xenial-cuda9.tar.gz | tar -zxvf - -C /build/ccminer
 RUN [ $(sha256sum /build/ccminer/ccminer-2.2.4-xenial-cuda9 | sed 's/ .*//') = 4ac48238ea2d2beab7a2f969cded0f84c6ee3e5d213f8495590eff034d19e1fe ]
 RUN install -o root -g root /build/ccminer/ccminer-2.2.4-xenial-cuda9 /apps/ccminer
-RUN apt-get -y install libcurl3
+RUN apt-get -y install libcurl3 libgomp1
 
 RUN mkdir /build/dstm
 RUN wget -q -O - 'https://docs.google.com/uc?export=download&id=19fSFYqoeOhOkxQqKnGpNI3n-7TIppHnq' | tar -zxvf - -C /build/dstm

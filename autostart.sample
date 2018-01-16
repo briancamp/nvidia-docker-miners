@@ -15,15 +15,14 @@ my_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #set_nvidia_card PCI:3:0:0 90 0 0
 #nvidia-smi -i 2 -pl 220
 
-# Pool user/names (edit)
+# Pool usernames (edit)
 nh_user="3JeigPDY9gzP7UoqJNPaXQHazzsM4wCZhS.$me"
-xmr_user="475FieCP9NqLh5ZtgtwXG7GrBgnorpEPrASMMmf73YVq44MZMajMzsU3VFRbUqR25gLgBbyt8LW7WhGx15tC1NJuUZ5P7wk.$me"
 
 # Start miners (uncomment / edit)
 #screen -dm -S dstm "$my_dir"/start/start.dstm equihash.usa.nicehash.com:3357 "$nh_user"
 #screen -dm -S ethermine "$my_dir"/start/start.ethermine daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
 #screen -dm -S ewfb "$my_dir"/start/start.ewfb equihash.usa.nicehash.com:3357 "$nh_user"
-#screen -dm -S xmrig "$my_dir"/start/start.xmrig pool.minexmr.com:4444 "$xmr_user"
+#screen -dm -S xmrig "$my_dir"/start/start.xmrig cryptonight.usa.nicehash.com:3355 "$nh_user"
 #screen -dm -S daggerhashimoto_excavator "$my_dir"/start/start.excavator daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
 #screen -dm -S equihash_excavator "$my_dir"/start/start.excavator equihash.usa.nicehash.com:3357 "$nh_user"
 #screen -dm -S lbry_excavator "$my_dir"/start/start.excavator lbry.usa.nicehash.com:3356 "$nh_user"

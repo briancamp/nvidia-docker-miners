@@ -6,12 +6,6 @@ RUN apt-get -y install vim wget
 
 RUN mkdir /apps /build
 
-RUN mkdir /build/ccminer
-RUN wget -q -O - https://bcamp.sh/ccminer-2.2.4-xenial-cuda9/ccminer-2.2.4-xenial-cuda9.tar.gz | tar -zxvf - -C /build/ccminer
-RUN [ $(sha256sum /build/ccminer/ccminer-2.2.4-xenial-cuda9 | sed 's/ .*//') = 4ac48238ea2d2beab7a2f969cded0f84c6ee3e5d213f8495590eff034d19e1fe ]
-RUN install -o root -g root /build/ccminer/ccminer-2.2.4-xenial-cuda9 /apps/ccminer
-RUN apt-get -y install libcurl3 libgomp1
-
 RUN mkdir /build/dstm
 RUN wget -q -O - 'https://docs.google.com/uc?export=download&id=19fSFYqoeOhOkxQqKnGpNI3n-7TIppHnq' | tar -zxvf - -C /build/dstm
 RUN [ $(sha1sum /build/dstm/zm_0.5.8/zm | sed 's/ .*//') = '827b137e061fe1da8f8fbcea12cec22449d3ae13' ]

@@ -23,9 +23,9 @@ RUN [ $(sha256sum /build/ethminer/bin/ethminer | sed 's/ .*//') = 5a90c1c3af9d32
 RUN install -o root -g root /build/ethminer/bin/ethminer /apps
 
 RUN mkdir /build/excavator
-RUN wget -P /build/excavator https://github.com/nicehash/excavator/releases/download/v1.3.8a/excavator_1.3.8a-xenial0_amd64.deb
-RUN [ $(sha256sum /build/excavator/excavator_1.3.8a-xenial0_amd64.deb | sed 's/ .*//') = 531f7873d1523676d78e0c7736c6ea009d47722930988f8b51bc3236efa0ceb0 ]
-RUN apt-get -y install /build/excavator/excavator_1.3.8a-xenial0_amd64.deb
+RUN wget -P /build/excavator https://github.com/nicehash/excavator/releases/download/v1.3.9a/excavator_1.3.9a-xenial0_amd64.deb
+RUN [ $(sha256sum /build/excavator/excavator_1.3.9a-xenial0_amd64.deb | sed 's/ .*//') = 7781e41851fc2a52322e4e07f8c51a46135d15e280fecbe2ba36ceed233c1a9a ]
+RUN apt-get -y install /build/excavator/excavator_1.3.9a-xenial0_amd64.deb
 ADD excavator-start /apps/excavator-start
 
 RUN mkdir /build/ewfb

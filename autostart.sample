@@ -19,9 +19,7 @@ my_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 nh_user="3JeigPDY9gzP7UoqJNPaXQHazzsM4wCZhS.$me"
 
 # Start miners (uncomment / edit)
-#screen -dm -S dstm "$my_dir"/start/start.dstm equihash.usa.nicehash.com:3357 "$nh_user"
 #screen -dm -S ethermine "$my_dir"/start/start.ethermine daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
-#screen -dm -S ewfb "$my_dir"/start/start.ewfb equihash.usa.nicehash.com:3357 "$nh_user"
 #screen -dm -S xmrig "$my_dir"/start/start.xmrig cryptonight.usa.nicehash.com:3355 "$nh_user"
 #screen -dm -S daggerhashimoto_excavator "$my_dir"/start/start.excavator daggerhashimoto.usa.nicehash.com:3353 "$nh_user"
 #screen -dm -S equihash_excavator "$my_dir"/start/start.excavator equihash.usa.nicehash.com:3357 "$nh_user"
